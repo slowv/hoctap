@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif !important;
+    font-optical-sizing: auto;
+}
+
+#main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #fff;
+    flex-direction: column;
+    gap: 80px;
+    padding: 50px;
+}
+
+#main .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("../img/acdbbd94f7f39d050dc5e7506684dd4b.jpg") no-repeat center;
+    background-size: cover;
+    background-position-y: -500px;
+    filter: blur(3px);
+    height: 100%;
+    width: 100%;
+    z-index: -999;
+}
+
+#main .header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 450px;
+}
+
+#main .header .logo {
+    width: 180px;
+    opacity: .65;
+}
+
+#main .header .box-name {
+    width: 600px;
+    border: 5px solid #ececec;
+    padding: 15px 20px;
+    border-radius: 35px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: rgba(0, 0, 0, 0.24);
+    outline: none;
+    box-shadow: 0 0 10px #ececec;
+}
+
+#main .header .box-name img {
+    max-width: 25px;
+    filter: invert(100%)
+}
+
+#main .header .box-name .name {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+#main .content {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    background: url("../img/Bốc Bát Họ x Anh Rất Nhớ Em Remix _ Bản Làm Lại Voicals Rõ Ràng (320 kbps).png") no-repeat center;
+    background-size: contain;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#main .content .channel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    background: rgba(75, 104, 69, 0.44);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+#main .content span:nth-child(1) {
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-top: 4px solid #fff;
+    border-left: 4px solid #fff;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    border-top-left-radius: 8px;
+    opacity: .7;
+}
+
+#main .content span:nth-child(2) {
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-top: 4px solid #fff;
+    border-right: 4px solid #fff;
+    border-top-right-radius: 8px;
+    right: 30px;
+    top: 30px;
+    position: absolute;
+    opacity: .7;
+}
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+}
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quạt chùa</title>
+    <style>
+        #fan {
+            margin: 200px;
+            width: 450px;
+            height: 450px;
+            transition: transform 300ms;
+            background-image: url("https://cdn.discordapp.com/attachments/1149369909650931783/1263532735046094909/canh-quat-hatari-25-inch.png?ex=669a940f&is=6699428f&hm=98e597fbda94758520ae208ed9090e4eda953e8482989bf202bba27ce98be126&");
+            background-size: 450px;
+        }
+        .btn-off {
+            background: #e60073;
+        }
+
+        .btn-on, .btn-off {
+            outline: none;
+            padding: 10px 20px;
+            color: #fff;
+            border: none;
+            margin-left: 10px;
+        }
+
+        .btn-on.l1 {
+            background: #a07e1a;
+        }
+
+        .btn-on.l2 {
+            background: #5bb955;
+        }
+
+        .btn-on.l3 {
+            background: #11476a;
+        }
+    </style>
+</head>
+<body>
+<div id="fan"></div>
+<button type="button" class="btn-off" onclick="offFan()">OFF</button>
+<button type="button" class="btn-on l1" onclick="onFan(10, 1)">1</button>
+<button type="button" class="btn-on l2" onclick="onFan(20, 2)">2</button>
+<button type="button" class="btn-on l3" onclick="onFan(50, 3)">3</button>
+<script type="text/javascript">
+    let speed = 0;
+    let rotation = 0;
+    let level = 0;
+
+    setInterval(function () {
+        let fan = document.getElementById("fan")
+        fan.style.transform = `rotate(${rotation}deg`;
+        rotation += speed;
+    }, 100);
+
+    function offFan() {
+        speed = 0;
+        level = 0;
+    }
+
+    // s = speed
+    // lv = level
+    function onFan(s, lv) {
+        if (level === lv) {
+            offFan();
+            return;
+        }
+        speed = s;
+        level = lv;
+    }
+</script>
+</body>
+</html>
