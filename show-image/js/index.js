@@ -2,7 +2,12 @@
 document.addEventListener('DOMContentLoaded', async (event) => {
     console.log('DOM đã được tải và phân tích cú pháp hoàn toàn');
     await initData()
-        .then(() => showProducts());
+        .then(() => showProducts())
+        .then(() => {
+            if (products.length > 0) {
+                show(products[0].id)
+            }
+        });
 });
 
 let data = [
@@ -62,10 +67,24 @@ const findProduct = id => {
     return data.find(item => item.id === id);
 }
 
-const convertDate = date => {
+const convertDateShort = date => {
     // Lấy tháng và ngày
     const options = {month: 'short', day: 'numeric'};
     return new Date(date).toLocaleDateString('en-US', options);
+}
+
+const convertDate = value => {
+    // Tạo đối tượng Date từ chuỗi
+    const date = new Date(value);
+
+    // Lấy ngày, tháng và năm
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0
+    const year = date.getFullYear();
+
+    // Định dạng ngày thành dd/MM/yyyy
+    return `${day}/${month}/${year}`;
+
 }
 
 const removeClass = (targetClass, className) => {
@@ -80,6 +99,7 @@ const show = id => {
     document.getElementById('name-preview').innerText = product.name;
     document.getElementById('description-preview').innerText = product.description;
     document.getElementById('image-preview').src = product.image;
+    document.getElementById('date-preview').innerText = convertDate(product.date);
     removeClass('item', 'active');
     document.querySelector(`.item[data-id='${id}']`).classList.add('active')
 }
@@ -98,9 +118,8 @@ const showProducts = () => {
                     <div class="name">${products[i].name}</div>
                     <div class="description">${products[i].description}</div>
                 </div>
-                <div class="box-date">${convertDate(products[i].date)}</div>
+                <div class="box-date">${convertDateShort(products[i].date)}</div>
             </div>`
     }
-
     elmProducts.innerHTML = content;
 }
