@@ -31,5 +31,25 @@
     <div id="main">
         <img src="/bg.jpg" alt="" class="bg">
     </div>
+    <div id="footer" class="footer">
+        <div id="content">this is footer!</div>
+        <div id="child" class="child">SlowV</div>
+    </div>
 </body>
+<script>
+    let $ = selector => {
+        let elm = document.querySelector(selector);
+        return {
+            name: elm.className,
+            html: content => content ? elm.innerHTML = content : elm.innerHTML,
+            css: style => elm.style = style,
+            elm
+        };
+    }
+
+    let content = $("#footer #content");
+    content.html("Footer");
+    content.css("color: red");
+
+</script>
 </html>
