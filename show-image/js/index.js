@@ -11,35 +11,35 @@ let data = [
         image: './img/qua-luu.webp',
         name: 'Quả Lựu',
         date: new Date(),
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, assumenda.'
+        description: 'Lựu hay còn gọi là thạch lựu (Danh pháp khoa học: Punica granatum) là một loài thực vật ăn quả thân gỗ nhỏ có chiều cao từ 5-8 mét. Lựu có nguồn gốc bản địa Tây Nam Á và được đem trồng tại vùng Kavkaz từ thời cổ đại. '
     },
     {
         id: 2,
         image: './img/qua-xoai-tuong.jpg',
         name: 'Quả Xoài Tượng',
         date: new Date(),
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, assumenda.'
+        description: 'Xoài là loại trái cây quen thuộc và được ưa chuộng . Đây là loại quả chứa nhiều chất dinh dưỡng và có lợi cho sức khỏe của chúng ta'
     },
     {
         id: 3,
         image: './img/qua-xoai.jpg',
         name: 'Quả Xoài',
         date: new Date(),
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, assumenda.'
+        description: 'Xoài là một loại trái cây vị ngọt thuộc chi Xoài, bao gồm rất nhiều quả cây nhiệt đới, được trồng chủ yếu như trái cây ăn được. '
     },
     {
         id: 4,
         image: './img/qua-oi.webp',
         name: 'Quả Ổi',
         date: new Date(),
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, assumenda.'
+        description: 'Ổi là loại trái cây có vỏ ngoài màu xanh đậm và bên trong có những hạt màu trắng vàng được bao bọc bởi một lớp thịt màu trắng đục hoặc hồng.'
     },
     {
         id: 5,
         image: './img/qua-man.jpg',
         name: 'Quả Mận',
         date: new Date(),
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, assumenda.'
+        description: 'Quả mận ăn tươi, ép nước, làm mứt, phơi sấy khô. Mứt mận là đặc sản vùng cao phía Bắc, cách làm mứt cũng đơn giản, mận chín mua về rửa sạch, nấu nhỏ lửa khuấy đều cho mận bớt nước, thắng đường cho vào sau, tỉ lệ bằng nhau, nấu đến khi sánh đặc lại là được.'
     }
 ]
 let products = [];
