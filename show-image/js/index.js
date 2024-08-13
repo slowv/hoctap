@@ -1,8 +1,8 @@
 // Chờ DOM tải hoàn toàn cs thể thao tác được với HTMl
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', async (event) => {
     console.log('DOM đã được tải và phân tích cú pháp hoàn toàn');
-    initData();
-    showProducts();
+    await initData()
+        .then(() => showProducts());
 });
 
 let data = [
@@ -51,13 +51,11 @@ const setDataInStore = (key, data) => {
     localStorage.setItem(key, data);
 }
 
-const initData = () => {
+const initData = async () => {
     if (!localStorage.getItem('data')) {
         setDataInStore('data', JSON.stringify(data))
-    } else {
-        products = JSON.parse(getDataInStore('data'));
     }
-
+    products = JSON.parse(getDataInStore('data'));
 }
 
 const findProduct = id => {
@@ -66,7 +64,7 @@ const findProduct = id => {
 
 const convertDate = date => {
     // Lấy tháng và ngày
-    const options = { month: 'short', day: 'numeric' };
+    const options = {month: 'short', day: 'numeric'};
     return new Date(date).toLocaleDateString('en-US', options);
 }
 
