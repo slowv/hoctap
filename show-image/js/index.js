@@ -1,11 +1,11 @@
-// Chờ DOM tải hoàn toàn cs thể thao tác được với HTMl
+// Chờ DOM tải hoàn toàn có thể thao tác được với HTMl
 document.addEventListener('DOMContentLoaded', async (event) => {
     console.log('DOM đã được tải và phân tích cú pháp hoàn toàn');
     await initData()
         .then(() => showProducts())
         .then(() => {
             if (products.length > 0) {
-                show(products[0].id)
+                showPreview(products[0].id)
             }
         });
 });
@@ -48,19 +48,20 @@ let data = [
     }
 ]
 let products = [];
+
 const getDataInStore = key => {
-    return localStorage.getItem(key);
+    return JSON.parse(localStorage.getItem(key));
 }
 
 const setDataInStore = (key, data) => {
-    localStorage.setItem(key, data);
+    localStorage.setItem(key, JSON.stringify(data));
 }
 
 const initData = async () => {
-    if (!localStorage.getItem('data')) {
-        setDataInStore('data', JSON.stringify(data))
+    if (!getDataInStore('data')) {
+        setDataInStore('data', data)
     }
-    products = JSON.parse(getDataInStore('data'));
+    products = getDataInStore('data');
 }
 
 const findProduct = id => {
@@ -94,7 +95,7 @@ const removeClass = (targetClass, className) => {
     }
 }
 
-const show = id => {
+const showPreview = id => {
     let product = findProduct(id);
     document.getElementById('name-preview').innerText = product.name;
     document.getElementById('description-preview').innerText = product.description;
@@ -110,7 +111,7 @@ const showProducts = () => {
     for (let i = 0; i < products.length; i++) {
         let active = i === 0 ? 'active' : '';
         content +=
-            `<div class="item ${active}" onclick="show(${products[i].id})" data-id="${products[i].id}">
+            `<div class="item ${active}" onclick="showPreview(${products[i].id})" data-id="${products[i].id}">
                 <div class="box-image">
                     <img src="${products[i].image}" alt="">
                 </div>
