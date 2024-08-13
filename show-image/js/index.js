@@ -1,15 +1,18 @@
 // Chờ DOM tải hoàn toàn có thể thao tác được với HTMl
 document.addEventListener('DOMContentLoaded', async (event) => {
     console.log('DOM đã được tải và phân tích cú pháp hoàn toàn');
+    // Gọi hàm init data
     await initData()
+        // Gọi hàm initData() thành công thì sẽ gọi tiếp showProducts()
         .then(() => showProducts())
+        // Gọi hàm showProducts() thành công thì sẽ chạy tiếp block code phía dưới
         .then(() => {
             if (products.length > 0) {
                 showPreview(products[0].id)
             }
         });
 });
-
+// Dữ liệu ban đầu để lưu vào localstorage
 let data = [
     {
         id: 1,
@@ -47,33 +50,43 @@ let data = [
         description: 'Quả mận ăn tươi, ép nước, làm mứt, phơi sấy khô. Mứt mận là đặc sản vùng cao phía Bắc, cách làm mứt cũng đơn giản, mận chín mua về rửa sạch, nấu nhỏ lửa khuấy đều cho mận bớt nước, thắng đường cho vào sau, tỉ lệ bằng nhau, nấu đến khi sánh đặc lại là được.'
     }
 ]
+// Array rỗng để chứa product lấy từ localstorage
 let products = [];
 
+// Lấy dữ liệu từ localStorage theo key
 const getDataInStore = key => {
     return JSON.parse(localStorage.getItem(key));
 }
 
+// Set dữ liệu vào localStorage theo key và value
 const setDataInStore = (key, data) => {
     localStorage.setItem(key, JSON.stringify(data));
 }
 
+// Khởi tạo dữ liệu
 const initData = async () => {
+    // Kiểm tra trong localStorage có key = data hay không
     if (!getDataInStore('data')) {
+        // Set dữ liệu vào localStorage
         setDataInStore('data', data)
     }
+    // Lấy dữ liệu từ localStorage gán vào biến products
     products = getDataInStore('data');
 }
 
+// Tìm kiếm 1 product trong list products theo id
 const findProduct = id => {
-    return data.find(item => item.id === id);
+    return products.find(item => item.id === id);
 }
 
+// Chuyển Date thành dạng short VD: 2024-08-13T12:59:51.187Z => May 8
 const convertDateShort = date => {
     // Lấy tháng và ngày
     const options = {month: 'short', day: 'numeric'};
     return new Date(date).toLocaleDateString('en-US', options);
 }
 
+// Chuyển Date thành dạng short VD: 2024-08-13T12:59:51.187Z => 13/08/2024
 const convertDate = value => {
     // Tạo đối tượng Date từ chuỗi
     const date = new Date(value);
@@ -88,6 +101,7 @@ const convertDate = value => {
 
 }
 
+// Xóa class theo class target và xóa class là className
 const removeClass = (targetClass, className) => {
     let elms = document.getElementsByClassName(targetClass);
     for (let elm of elms) {
@@ -95,16 +109,23 @@ const removeClass = (targetClass, className) => {
     }
 }
 
+// Hiển thị sản phẩm mình click bên trái để hiển thị chi tiết bên phải
 const showPreview = id => {
+    // Tìm kiếm sản phẩm với id là sản phẩm mình vừa click
     let product = findProduct(id);
+
     document.getElementById('name-preview').innerText = product.name;
     document.getElementById('description-preview').innerText = product.description;
     document.getElementById('image-preview').src = product.image;
     document.getElementById('date-preview').innerText = convertDate(product.date);
+    // Xóa class item đang active
     removeClass('item', 'active');
+
+    // Thêm class active cho sản phẩm mình vừa click
     document.querySelector(`.item[data-id='${id}']`).classList.add('active')
 }
 
+// Hiển thị danh sách sản phẩm bên tay trái
 const showProducts = () => {
     let elmProducts = document.getElementById('list-product');
     let content = '';
