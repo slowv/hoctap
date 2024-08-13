@@ -55,7 +55,7 @@ const initData = () => {
     if (!localStorage.getItem('data')) {
         setDataInStore('data', JSON.stringify(data))
     } else {
-        products = JSON.parse(localStorage.getItem('data'));
+        products = JSON.parse(getDataInStore('data'));
     }
 
 }
